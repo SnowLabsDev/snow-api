@@ -1,3 +1,5 @@
+/*
+
 'use strict';
 
 
@@ -13,7 +15,7 @@ mongoose.Promise = global.Promise; // set promise type
 
 // mongoose.connect()
 
-/*
+
 app.use(bodyParser.json());
 
 routes(app);

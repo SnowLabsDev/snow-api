@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# mLab credentials
+/test/mongo_credentials.js
+
 # production
 /build
 

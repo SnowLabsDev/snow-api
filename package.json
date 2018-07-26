@@ -4,7 +4,8 @@
   "description": "Express backend for Snow",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_END=test nodemon --exec 'mocha --recursive -R min'",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,11 +17,16 @@
     "url": "https://github.com/SnowLabsDev/snow-api/issues"
   },
   "homepage": "https://github.com/SnowLabsDev/snow-api#readme",
+  "engines": {
+    "npm": "4.2.0",
+    "node": "7.10.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
     "mongodb": "^3.1.1",
-    "mongoose": "^5.2.5"
+    "mongoose": "^5.2.5",
+    "nodemon": "^1.18.3"
   }
 }
