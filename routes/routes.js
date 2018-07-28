@@ -15,7 +15,9 @@ module.exports = (app) => {
   // users
   app.post('/api/test/users/', TestController.createUser);
   app.get('/api/test/users/', TestController.getAllUsers);
+  app.post('/api/test/users/contracts/', TestController.getUserContracts);
 
   // contracts
   app.post('/api/test/contracts/', TestController.createContract);
+
 }
