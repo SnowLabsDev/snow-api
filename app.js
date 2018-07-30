@@ -22,17 +22,10 @@ mongoose.connection
     console.warn('Warning', error);
   });
 
+
 // setup app
 app.use(bodyParser.json());
 
 routes(app);
-
-app.get('/', (req, res) => {
-  res.status(200).send('Wassup, world!').end();
-});
-
-app.use((err, req, res, next) => {
-  res.status(422).send({ error: err.message });
-});
 
 module.exports = app;

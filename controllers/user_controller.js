@@ -43,7 +43,7 @@ module.exports = {
   // done
   // get a signle user by their phone number
   async getUserByPhone(req, res, next) {
-    const user = await User.findOne({req.params.userPhone});
+    const user = await User.findOne({"phone": req.params.userPhone});
 
     res.send(user);
   },
@@ -82,7 +82,7 @@ module.exports = {
     const userProps = req.body;
 
     //Model.findByIdAndUpdate(id, updateObj, {new: true}, function(err, model) {...
-    const user = await User.findOneAndUpdate({"phone": req,params.userPhone}, userProps, {new: true});
+    const user = await User.findOneAndUpdate({ "phone": req.params.userPhone }, userProps, {new: true});
 
     res.send(user);
   },
@@ -94,7 +94,7 @@ module.exports = {
   // done
   // find a single user by their user id and delete them, and return their object
   async deleteUserById(req, res, next) {
-    await user = await User.findByIdAndDelete(req.params.userId);
+    const user = await User.findByIdAndDelete(req.params.userId);
 
     res.send(user);
   },
@@ -102,7 +102,7 @@ module.exports = {
   // done
   // find a single user by their phone number and delete them, and return their object
   async deleteUserByPhone(req, res, next) {
-    await user = await User.findOneAndDelete(req.params.userPhone);
+    const user = await User.findOneAndDelete(req.params.userPhone);
 
     res.send(user);
   },

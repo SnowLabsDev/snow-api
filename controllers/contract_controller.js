@@ -101,12 +101,12 @@ module.exports = (app) = {
 
   // done
   // find a contract by their contract id and delete them, and return their object
-  async deleteUserById(req, res, next) {
+  async deleteContractById(req, res, next) {
 
     // !!!!!
     // need to get all users involved and also remove it form their accounts
     // !!!!!
-    await contract = await Contract.findByIdAndDelete(req.params.contractId);
+    const contract = await Contract.findByIdAndDelete(req.params.contractId);
 
     res.send(contract);
   },
@@ -118,7 +118,7 @@ module.exports = (app) = {
 
   // done
   // find a contract by a specific id, then send it to the farm for compilation
-  compileContractById(req, res, next) {
+  async compileContractById(req, res, next) {
     const contract = await Contract.findById(req.params.contractId);
 
     // make a call to our deployment server
@@ -133,7 +133,7 @@ module.exports = (app) = {
 
   // done
   // find a contract by a specific id, then send it to the farm for deployment
-  deployContractById(req, res, next) {
+  async deployContractById(req, res, next) {
     const contract = await Contract.findById(req.params.contractId);
 
     // make a call to our deployment server
