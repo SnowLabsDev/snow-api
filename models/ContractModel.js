@@ -13,12 +13,18 @@ const ContractSchema = new Schema({
   contractType: { // SingleIssueBallot, MultiIssueBallot, etc
     type: String,
   },
-  ethAddress: { // transaction address
+  ethAddress: { // transaction address. If blank, it serves as a proxy to deployment
     type: String,
   },
   ethABI: { // abi interface for the contract (need for React and deployment)
     type: Schema.Types.Mixed,
   },
+  ethBytecode: {
+    type: Schema.Types.Mixed,
+  },
+  arguments: [{ // incorrect arguments right now
+    type: Schema.Types.Mixed,
+  }]
 });
 
 // ############################################################################
