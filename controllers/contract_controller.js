@@ -2,7 +2,7 @@ const User = require('../models/UserModel');
 const Contract = require('../models/ContractModel');
 const axios = require('axios');
 
-module.exports = {
+module.exports = (app) = {
 
   // **************************************************************************
   // Create

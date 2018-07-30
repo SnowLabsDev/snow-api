@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 
 // setup and test connection
 const mLabPath = "mongodb://" + db_mvp_USERNAME + ":" + db_mvp_PASSWORD + "@ds155461.mlab.com:55461/mvp";
-mongoose.connect('mongodb://localhost:27017/snow-api-test');
+mongoose.connect(mLabPath);
 mongoose.connection
   .once('open', () => {
     console.log('mongoose connection is good to go')
