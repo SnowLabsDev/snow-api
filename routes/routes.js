@@ -46,6 +46,11 @@ module.exports = (app) => {
   // get all users
   app.get('/api/users/', UserController.getUsers);
 
+  // get a user if authenticated
+  app.get('/api/users/auth/:userPhone/:userPin', UserController.authUser);
+
+  // get a user's ethAddress
+  app.get('/api/users/:userPhone/ethAddress', UserController.getEthAddress);
   // *****
   // Update
   // *****

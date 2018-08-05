@@ -34,6 +34,13 @@ UserSchema.virtual('inCount').get(function() {
   return this.inContracts.length;
 });
 
+UserSchema.virtual('ethAddress').get(function() {
+
+  idString = String(this._id);
+  ethAddress = "0x0000000000000000";
+  return ethAddress + idString;
+})
+
 // Create and export Schema
 const User = mongoose.model('user', UserSchema);
 

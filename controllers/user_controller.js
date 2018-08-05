@@ -41,7 +41,7 @@ module.exports = {
   },
 
   // done
-  // get a signle user by their phone number
+  // get a single user by their phone number
   async getUserByPhone(req, res, next) {
     const user = await User.findOne({"phone": req.params.userPhone});
 
@@ -59,6 +59,26 @@ module.exports = {
       });
       res.send(userMap);
     });
+  },
+
+  async getEthAddress(req, res, next) {
+    const user = await User.findOne({"phone": req.params.userPhone});
+    res.send({"address": user.ethAddress});
+  },
+
+  async authUser(req, res, next) {
+
+    console.log('auth-ing user');
+    const { userPhone, userPin } = req.params;
+
+    const user = await User.findOne({"phone": userPhone});
+
+    if (user === null) {
+      res.send({"err": "user not found in our system"});
+    }
+    if ((user.phone === userPhone) && (user.pin === userPin)) {
+      res.send(user);
+    }
   },
 
   // **************************************************************************

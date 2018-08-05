@@ -11,7 +11,7 @@ module.exports = (app) = {
   // done
   // create a contract for SingleIssueBallot
   async createContract(req, res, next) {
-    const ContractProps = req.body;
+    const contractProps = req.body;
 
     const {
       owner, // phone number
