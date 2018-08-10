@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SoliditySchema = require('./contracts/SoliditySchema');
 
 const ContractSchema = new Schema({
   owner: { // use hash(phoneNumbers) - still need to finish in UserModel
@@ -12,10 +11,11 @@ const ContractSchema = new Schema({
     ref: 'user'
   }],
   contractType: { // SingleIssueBallot, MultiIssueBallot, etc
-    type: String,
+    type: String, // use this to parse the info needed for Mongo
   },
-  contractInfo: { // This is going to hold the info about the contract
-    type: SoliditySchema // Each contract will have it's own model that we'll have to parse
+  solidityContract: {
+    type: Schema.Types.ObjectId, // Each contract will have it's own model that we can call
+    ref: 'solidity'
   },
   ethAddress: { // transaction address. If blank, it serves as a proxy to deployment
     type: String,

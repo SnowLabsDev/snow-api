@@ -1,25 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ParameterSchema = new Schema({
-  name: String,
-  description: String,
-  value: Schema.Types.Mixed
-});
-
-const FunctionSchema = new Schema({
-  name: String,
-  description: String,
-  arguments: [ParameterSchema],
-  outputs: [ParameterSchema]
-});
-
-
 const SoliditySchema = new Schema({
   type: String,
   description: String,
-  constructorArguments: [ParameterSchema],
-  functions: [FunctionSchema]
+  constructorArguments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'parameter',
+  }],
+  functions: [{
+    type: Schema.Types.ObjectId,
+    ref: 'func',
+  }],
 });
 
 // ############################################################################
@@ -35,6 +27,6 @@ SoliditySchema.virtual('argumentCount').get(function() {
 });
 
 
-const Solidity = mongoose.model('sib', SoliditySchema);
+const Solidity = mongoose.model('solidity', SoliditySchema);
 
 module.exports = Solidity;
