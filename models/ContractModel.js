@@ -35,12 +35,6 @@ const ContractSchema = new Schema({
 // Virtual Attributes
 // ############################################################################
 
-/* removed until I am confident I want multiple owners
-ContractSchema.virtual('ownerCount').get(function() {
-  return this.owners.length;
-});
-*/
-
 ContractSchema.virtual('participantCount').get(function() {
   return this.participants.length;
 });

@@ -1,6 +1,7 @@
+const axios = require('axios');
+
 const User = require('../models/UserModel');
 const Contract = require('../models/ContractModel');
-const axios = require('axios');
 
 module.exports = (app) = {
 
@@ -62,9 +63,15 @@ module.exports = (app) = {
   // done
   // get a single contract via it's Id
   async getContractById(req, res, next) {
-    const contract = await Contract.findById(req.params.contractId);
-
-    res.send(contract);
+    console.log('getting by id');
+    await Contract.findById(req.params.contractId)
+      .populate('owner')
+      .populate('participants')
+      .populate({path: 'solidityContract', populate: {path: 'functions', model: 'func'}})
+      .exec(function (err, contract) {
+        console.log(`sending contract:\n\n ${contract.solidityContract.functions}`);
+        res.send(contract);
+      });
   },
 
   // done

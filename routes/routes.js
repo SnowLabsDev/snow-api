@@ -1,6 +1,10 @@
+// Controllers
 const TestController = require('../controllers/test_controller');
 const UserController = require('../controllers/user_controller');
 const ContractController = require('../controllers/contract_controller');
+
+// Creators
+const SingleIssueBallotCreator = require('../creators/SingleIssueBallotCreator');
 
 module.exports = (app) => {
 
@@ -11,7 +15,9 @@ module.exports = (app) => {
   app.get('/api/test/', TestController.test);
   app.post('/api/test/', TestController.reflect);
 
-
+  app.post('/api/test/contracts', TestController.SolidityTest);
+  app.post('/api/test/solidity', SingleIssueBallotCreator.createSingleIssueBallot);
+  app.post('/api/test/contracts/id/', TestController.getPopulatedContract);
   // ##########################################################################
   // User functions
   // ##########################################################################
@@ -129,6 +135,4 @@ module.exports = (app) => {
 
   // deploy contract by Id
   app.get('/api/contracts/id/:contractId/deploy/', ContractController.deployContractById);
-
-
 };

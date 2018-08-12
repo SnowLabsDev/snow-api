@@ -1,3 +1,9 @@
+
+/*
+
+
+All of this is just for storage at the moment, delete before next master push
+
 const address1 = '0xBA17Ba2246CE84E388B8f04909180ed3f2ef75b7'; //0xc2EBE652DC717Bcea30D90Fb04758C15a3e006bc
 const address2 = '0xc2EBE652DC717Bcea30D90Fb04758C15a3e006bc';
 
@@ -30,3 +36,5 @@ abiTypes = {
 };
 
 module.exports = abiTypes;
+
+*/

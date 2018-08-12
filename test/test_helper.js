@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const { db_mvp_USERNAME, db_mvp_PASSWORD } = require('../mongo_credentials');
 // remember to run mongod before connect with RoboMongo
 
-
 mongoose.Promise = global.Promise;
 
 before((done) => {

@@ -2,7 +2,6 @@ const User = require('../models/UserModel');
 const Contract = require('../models/ContractModel');
 
 module.exports = {
-
   // **************************************************************************
   // Create
   // **************************************************************************
@@ -37,7 +36,6 @@ module.exports = {
     const user = await User.findById(req.params.userId);
 
     res.send(user);
-
   },
 
   // done
@@ -67,10 +65,7 @@ module.exports = {
   },
 
   async authUser(req, res, next) {
-
-    console.log('auth-ing user');
     const { userPhone, userPin } = req.params;
-
     const user = await User.findOne({"phone": userPhone});
 
     if (user === null) {
@@ -89,8 +84,6 @@ module.exports = {
   // find a single user by their id and update their info
   async updateUserById(req, res, next) {
     const userProps = req.body;
-
-    //Model.findByIdAndUpdate(id, updateObj, {new: true}, function(err, model) {...
     const user = await User.findByIdAndUpdate(req,params.userId, userProps, {new: true});
 
     res.send(user);
@@ -100,8 +93,6 @@ module.exports = {
   // find a single user by their phone number and update their info
   async updateUserByPhone(req, res, next) {
     const userProps = req.body;
-
-    //Model.findByIdAndUpdate(id, updateObj, {new: true}, function(err, model) {...
     const user = await User.findOneAndUpdate({ "phone": req.params.userPhone }, userProps, {new: true});
 
     res.send(user);
