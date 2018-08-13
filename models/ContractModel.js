@@ -28,7 +28,16 @@ const ContractSchema = new Schema({
   },
   arguments: [{ // will remove once "contractInfo" variable is fully implemented
     type: Schema.Types.Mixed,
-  }]
+  }],
+  status: {
+    type: String,
+    enum: ['Active', 'Inactive', 'Draft'],
+    /*
+    Active: Deployed to Eth
+    Inactive: Deployed, completed
+    Draft: Not deployed
+    */
+  }
 });
 
 // ############################################################################

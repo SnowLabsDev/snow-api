@@ -13,14 +13,23 @@ const UserSchema = new Schema({
   pin: {
     type: String,
   },
-  ownContracts: [{ // contracts owning/administering
+  ownContracts: [{ // contracts that are deployed and being owning/administering
     type: Schema.Types.ObjectId,
     ref: 'contract'
   }],
-  inContracts: [{ // contracts participating in
+  inContracts: [{ // contracts that are deployed, and being participated in
     type: Schema.Types.ObjectId,
     ref: 'contract'
-  }]
+  }],
+  draftContracts: [{ // contracts that haven't been deployed
+    type: Schema.Types.ObjectId,
+    ref: 'contract'
+  }],
+  archivedContracts: [{ // contracts that are completed
+    type: Schema.Types.ObjectId,
+    ref: 'contract'
+  }],
+
 });
 
 // ############################################################################

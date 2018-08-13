@@ -16,8 +16,10 @@ module.exports = (app) => {
   app.post('/api/test/', TestController.reflect);
 
   app.post('/api/test/contracts', TestController.SolidityTest);
+  app.post('/api/test/contracts/draft/', TestController.SolidityDraftTest);
   app.post('/api/test/solidity', SingleIssueBallotCreator.createSingleIssueBallot);
   app.post('/api/test/contracts/id/', TestController.getPopulatedContract);
+  app.get('/api/test/solidity/id/:solidityId', TestController.getSolidityById);
   // ##########################################################################
   // User functions
   // ##########################################################################
