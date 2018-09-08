@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ContractSchema = new Schema({
+  /*
   owner: { // use hash(phoneNumbers) - still need to finish in UserModel
     type: Schema.Types.ObjectId,
     ref: 'user'
@@ -9,6 +10,18 @@ const ContractSchema = new Schema({
   participants: [{
     type: Schema.Types.ObjectId,
     ref: 'user'
+  }],
+  */
+  members: [{
+    id: {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    },
+    role: {
+      type: String,
+      enum: ['member', 'admin']
+    },
+    todos: [String],
   }],
   contractType: { // SingleIssueBallot, MultiIssueBallot, etc
     type: String, // use this to parse the info needed for Mongo
@@ -43,10 +56,11 @@ const ContractSchema = new Schema({
 // ############################################################################
 // Virtual Attributes
 // ############################################################################
-
+/*
 ContractSchema.virtual('participantCount').get(function() {
   return this.participants.length;
 });
+*/
 
 const Contract = mongoose.model('contract', ContractSchema);
 

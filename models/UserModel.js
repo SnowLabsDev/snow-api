@@ -13,6 +13,27 @@ const UserSchema = new Schema({
   pin: {
     type: String,
   },
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  }],
+  groups: [{
+    type: Schema.Types.ObjectId,
+    ref: 'group'
+  }],
+  contracts: [{
+    id: {
+      type: Schema.Types.ObjectId,
+      ref: 'contract'
+    },
+    status: {
+      type: String,
+      enum: ['read', 'unread', 'archived']
+    },
+    important: Boolean,
+    tags: [String]
+  }],
+  /*
   ownContracts: [{ // contracts that are deployed and being owning/administering
     type: Schema.Types.ObjectId,
     ref: 'contract'
@@ -28,20 +49,24 @@ const UserSchema = new Schema({
   archivedContracts: [{ // contracts that are completed
     type: Schema.Types.ObjectId,
     ref: 'contract'
-  }],
+  }], */
 
 });
 
 // ############################################################################
 // Virtual Attributes
 // ############################################################################
+/*
 UserSchema.virtual('ownCount').get(function() {
   return this.ownContracts.length;
 });
+*/
 
+/*
 UserSchema.virtual('inCount').get(function() {
   return this.inContracts.length;
 });
+*/
 
 UserSchema.virtual('ethAddress').get(function() {
 
